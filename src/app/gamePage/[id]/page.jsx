@@ -9,6 +9,7 @@ import paper from '../../../images/paper-user.png';
 import scissors from '../../../images/scissors-user.png';
 import Navbar from "@/components/navbar";
 import Link from "next/link";
+import { useSearchParams } from 'next/navigation';
 
 const socket = io('https://node-server-0i65.onrender.com');
 
@@ -18,6 +19,9 @@ const GamePage = ({ params }) => {
   const [choice, setChoice] = useState(null);
   const [result, setResult] = useState(null);
   const { id: gameId } = params; 
+
+  const parameters = useSearchParams();
+  const gameName = parameters.get('name');
  
 
   useEffect(() => {
@@ -62,6 +66,7 @@ const GamePage = ({ params }) => {
       <Navbar />
       <div className="m-4">
         <div className="grid place-items-center">
+          <h1>{gameName}</h1>
         </div>
         <div className="flex justify-center items-center m-5">
         {Object.values(players).slice(0, 2).map((player, index) => (

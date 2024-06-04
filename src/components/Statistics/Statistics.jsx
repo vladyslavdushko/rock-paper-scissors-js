@@ -77,6 +77,7 @@ export default async function Statistics() {
             <h2 className='statistics__secondaryTitle'>Best players</h2>
             <ul>
                 {bestPlayers.map(player => (
+                    player !== 'draw' &&
                     <li key={player}>{player} - {playerFrequency[player]} {playerFrequency[player] === 1 ? 'win' : 'wins'}</li>
                 ))}
             </ul>
@@ -86,6 +87,7 @@ export default async function Statistics() {
             <h2 className='statistics__secondaryTitle'>Worst players</h2>
             <ul>
                 {worstPlayers.map(player => (
+                    player !== 'draw' &&
                     <li key={player}>{player} - {playerFrequency[player]} {playerFrequency[player] === 1 ? 'win' : 'wins'}</li>
                 ))}
             </ul>
